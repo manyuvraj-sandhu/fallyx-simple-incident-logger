@@ -7,7 +7,6 @@ The following includes:
 * Clear explanations of how to run everything (local and Docker)
 * Firebase and `.env` setup
 * Test instructions
-* Direct reference to your GitHub repo
 
 ---
 
