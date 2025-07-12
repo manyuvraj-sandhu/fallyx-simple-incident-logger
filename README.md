@@ -16,10 +16,10 @@ The following includes:
 This full-stack project is a lightweight incident logging and summarization tool. Users can log "fall", "medication", or "behaviour" incidents, generate summaries with AI (OpenAI API), and view visual analytics per user. Auth is powered by Firebase and all actions are secured with ID tokens.
 
 ---
-
+```
+```
 ## 📁 Project Structure
 
-```
 
 fallyx-simple-incident-logger/
 │
