@@ -50,4 +50,37 @@ router.post('/incidents/:id/summarize', verifyToken, async (req, res) => {
   }
 });
 
+// ✅ Update an incident
+router.put('/incidents/:id', verifyToken, async (req, res) => {
+  const userId = (req as any).uid;
+  const { type, description } = req.body;
+
+  try {
+    const incident = await Incident.findOne({ where: { id: req.params.id, userId } });
+    if (!incident) return res.status(404).json({ error: 'Incident not found' });
+
+    await incident.update({ type, description });
+    res.json(incident);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update incident' });
+  }
+});
+
+// ✅ Delete an incident
+router.delete('/incidents/:id', verifyToken, async (req, res) => {
+  const userId = (req as any).uid;
+
+  try {
+    const incident = await Incident.findOne({ where: { id: req.params.id, userId } });
+    if (!incident) return res.status(404).json({ error: 'Incident not found' });
+
+    await incident.destroy();
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to delete incident' });
+  }
+});
+
 export default router;

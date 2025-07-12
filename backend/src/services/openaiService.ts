@@ -17,7 +17,7 @@ export async function generateSummary(description: string): Promise<string> {
       },
       {
         role: 'user',
-        content: `Summarize this: ${description}`,
+        content: `Staff at a senior care home reported an incident with description. Summarize this incident regarding a senior citizen  and give key insights to why this could have happened: ${description}`,
       },
     ],
   });

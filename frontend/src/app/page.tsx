@@ -12,6 +12,7 @@ import { Particles } from '@/components/particles';
 import Image from 'next/image';
 import IncidentForm from '@/components/IncidentForm';
 import IncidentList from '@/components/IncidentList';
+import IncidentChart from '@/components/IncidentChart'; // ✅ NEW IMPORT
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
@@ -115,6 +116,12 @@ export default function Home() {
               </div>
             )}
 
+            {/* Chart Above Incident List */}
+            <div className="w-full sm:w-11/12">
+              <IncidentChart user={user} />
+            </div>
+
+            {/* Incident List */}
             <div className="w-full sm:w-11/12 mt-6">
               <IncidentList key={refreshKey} user={user} />
             </div>
