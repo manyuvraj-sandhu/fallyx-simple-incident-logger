@@ -1,3 +1,6 @@
+# 🎥 Sample Walkthrough Tutorial:
+[Watch the Demo Video →](https://drive.google.com/file/d/1cc13oOCifNjO7JcjfdhQeYNxk7A_H6xl/view?usp=drive_link)
+
 The following includes:
 
 * Detailed setup instructions for both backend and frontend
@@ -10,11 +13,11 @@ The following includes:
 
 
 # 🧠 Fallyx Simple Incident Logger
-```markdown
+
 [Live GitHub Repo →](https://github.com/manyuvraj-sandhu/fallyx-simple-incident-logger)
 
 This full-stack project is a lightweight incident logging and summarization tool. Users can log "fall", "medication", or "behaviour" incidents, generate summaries with AI (OpenAI API), and view visual analytics per user. Auth is powered by Firebase and all actions are secured with ID tokens.
-```
+
 ---
 
 
