@@ -8,19 +8,19 @@ The following includes:
 
 ---
 
-```markdown
-# 🧠 Fallyx Simple Incident Logger
 
+# 🧠 Fallyx Simple Incident Logger
+```markdown
 [Live GitHub Repo →](https://github.com/manyuvraj-sandhu/fallyx-simple-incident-logger)
 
 This full-stack project is a lightweight incident logging and summarization tool. Users can log "fall", "medication", or "behaviour" incidents, generate summaries with AI (OpenAI API), and view visual analytics per user. Auth is powered by Firebase and all actions are secured with ID tokens.
-
+```
 ---
-```
-```
-## 📁 Project Structure
 
 
+# 📁 Project Structure
+
+```
 fallyx-simple-incident-logger/
 │
 ├── backend/               → Node.js + Express + PostgreSQL + Firebase Auth + OpenAI
@@ -136,12 +136,12 @@ cd backend
 npm install
 ```
 
-# Option 1: With npm script
+#### Option 1: With npm script
 ```bash
 npm run dev
 ```
 
-# Option 2: Directly
+#### Option 2: Directly
 ```bash
 npx ts-node-dev src/app.ts
 ```
