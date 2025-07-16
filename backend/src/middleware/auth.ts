@@ -19,7 +19,7 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
   const authHeader = req.headers.authorization;
 
   if (!authHeader?.startsWith('Bearer ')) {
-    return res.status(401).send('Unauthorized');
+    return res.status(401).json({ error: 'Unauthorized: Missing or invalid authorization header' });
   }
 
   const token = authHeader.split('Bearer ')[1];
@@ -27,9 +27,9 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
     const uid = decodedToken.uid;
-    const displayName = decodedToken.name || 'Unknown';
+    const displayName = decodedToken.name || 'Unknown User';
 
-    // Ensure user exists in database
+    // Create user in DB if doesn't exist
     await User.findOrCreate({
       where: { id: uid },
       defaults: { displayName },
@@ -39,6 +39,6 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
     next();
   } catch (err) {
     console.error('Invalid token:', err);
-    res.status(401).send('Invalid token');
+    return res.status(401).json({ error: 'Unauthorized: Invalid token' });
   }
 };

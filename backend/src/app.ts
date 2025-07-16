@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { sequelize } from './models';
 import incidentRoutes from './routes/incidentRoutes';
+import { errorHandler } from './middleware/errorHandler';
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ app.use(
 );
 app.use(express.json());
 app.use('/', incidentRoutes);
+
+app.use(errorHandler);
 
 sequelize.sync({ alter: true })
   .then(() => {
