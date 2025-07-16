@@ -14,7 +14,7 @@ app.use(
 app.use(express.json());
 app.use('/', incidentRoutes);
 
-// Ensure test DB is reset
+// Reset test database schema before tests run
 if (process.env.NODE_ENV === 'test') {
   sequelize.sync({ force: true }).catch((err) => {
     console.error('Test DB sync failed:', err);

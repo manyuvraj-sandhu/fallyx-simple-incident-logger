@@ -1,3 +1,4 @@
+// Minimal mocking: only external services (Firebase, OpenAI) are mocked for realistic integration tests
 jest.mock('openai', () => ({
   __esModule: true,
   default: class {

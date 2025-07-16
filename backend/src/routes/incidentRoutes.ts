@@ -10,6 +10,7 @@ import {
 
 const router = express.Router();
 
+// Incident routes with authentication middleware
 router.post('/incidents', verifyToken, createIncident);
 router.get('/incidents', verifyToken, getUserIncidents);
 router.post('/incidents/:id/summarize', verifyToken, summarizeIncident);

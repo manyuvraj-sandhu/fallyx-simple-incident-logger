@@ -24,7 +24,7 @@ Incident.init(
         model: 'users',
         key: 'id',
       },
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE', // Delete incidents if user is deleted
     },
     type: {
       type: DataTypes.STRING,

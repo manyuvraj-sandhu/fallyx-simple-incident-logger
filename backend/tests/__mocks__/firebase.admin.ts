@@ -5,7 +5,7 @@ module.exports = {
   credential: {
     cert: jest.fn(),
   },
-  apps: [{}], // fake an initialized app
+  apps: [{}], // simulate initialized Firebase app
   auth: () => ({
     verifyIdToken,
   }),

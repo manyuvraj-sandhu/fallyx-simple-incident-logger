@@ -7,6 +7,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// Generate summary using OpenAI GPT-3.5-turbo model
 export async function generateSummary(description: string): Promise<string> {
   const completion = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',

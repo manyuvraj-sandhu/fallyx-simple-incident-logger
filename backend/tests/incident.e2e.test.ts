@@ -1,3 +1,4 @@
+// Minimal mocking: only external services (Firebase, OpenAI) are mocked for realistic integration tests
 jest.mock('firebase-admin', () => ({
   apps: [{}],
   credential: { cert: jest.fn() },
@@ -58,7 +59,7 @@ describe('Incident E2E Tests', () => {
     const res = await request(app)
       .post('/incidents')
       .set('Authorization', `Bearer ${user1Token}`)
-      .send({ description: 'Missing type field' }); // missing 'type'
+      .send({ description: 'Missing type field' });
 
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty('error');
