@@ -10,16 +10,20 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(
-    cors({
-      origin: 'http://localhost:3000', // allow frontend dev server
-      credentials: true,
-    })
-  );
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use('/', incidentRoutes);
 
-sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`✅ Server is running on http://localhost:${PORT}`);
+sequelize.sync({ alter: true })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Database sync failed:', err);
   });
-});

@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import admin from 'firebase-admin';
 import dotenv from 'dotenv';
 import path from 'path';
+import { User } from '../models/user';
 
 dotenv.config();
 
@@ -25,7 +26,16 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
-    (req as any).uid = decodedToken.uid;
+    const uid = decodedToken.uid;
+    const displayName = decodedToken.name || 'Unknown';
+
+    // Ensure user exists in database
+    await User.findOrCreate({
+      where: { id: uid },
+      defaults: { displayName },
+    });
+
+    (req as any).uid = uid;
     next();
   } catch (err) {
     console.error('Invalid token:', err);
